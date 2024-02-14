@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}To Add{% endblock %}
+{% block content %}
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #siteNav {
+    width: 100%;
+    z-index: 1000;
+  }
+
+  main {
+    margin-top: 70px;
+  }
+
+  .text-container {
+    max-height: auto;
+    overflow-y: auto;
+    text-align: center;
+    width: 1250px;
+    word-wrap: break-word;
+  }
+
+  .table-container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .submit_button {
+    color: white;
+    background-color: #008080;
+    border-radius: 25px;
+    border: none;
+  }
+  .list-items {
+    color: black;
+  }
+  .textbox-format {
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+  }
+  .container {
+    text-align: center;
+  }
+  textarea {
+    width: 70%;
+    height: 50em;
+  }
+</style>
+{% if formBool == True %}
+<div style="width: 100%; text-align: center">
+  <br />
+  <br />
+  <br />
+  <form action="" method="POST" id="toAddForm">
+    <h3>{{ form.toAddQ.label }}</h3>
+    <p>{{ form.toAddQ }}</p>
+    <p>{{ form.submit }}</p>
+  </form>
+</div>
+{% endif %} {% if formBool == False %}
+<div class="container">
+  <br />
+  <br />
+  <h1>Lyrics To Add</h1>
+  <br />
+  <br />
+  {% autoescape false %}
+  <p>{{ toAdd }}</p>
+  {% endautoescape %}
+</div>
+{% endif %}
+<br />
+<br />
+<p>
+  <a href="/to-add">Form Page</a>
+</p>
+<br />
+<br />
+{% endblock %}

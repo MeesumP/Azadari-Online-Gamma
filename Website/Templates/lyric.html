@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}{{ lyric.title }}{% endblock %}
+{% block content %}
+<style>
+  .container {
+    text-align: center;
+  }
+</style>
+<main>
+  <div class="container">
+    <br />
+    <br />
+    <h1>{{ lyric.title }}</h1>
+    <br />
+    <br />
+    {% if not lyric.link == None and not lyric.link == '' %} {% autoescape false %} {{ iframeCode }} {%
+    endautoescape %}
+    <br />
+    <br />
+    {% if not lyric.linkTime == '' %}
+    <p>Recitation at {{ lyric.linkTime }}</p>
+    {% endif %}
+    <p>
+      <a href="{{ lyric.link }}" target="_blank">YouTube Link</a>
+    </p>
+    <br />
+    {% endif %} {% autoescape false %}
+    <p>{{ lyric.words.title() }}</p>
+    {% endautoescape %}
+    <br />
+    <br />
+  </div>
+</main>
+{% endblock %}
+{% block script %}
+if(isMobile() && urlIsDesktop) {
+  window.location.href = "/lyrics/{{ URLify(lyric.title) }}/mobile";
+}
+if(isDesktop() && urlIsMobile()) {
+  window.location.href = "/lyrics/{{ URLify(lyric.title) }}/desktop";
+}
+{% endblock %}

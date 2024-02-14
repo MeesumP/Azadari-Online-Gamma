@@ -1,0 +1,7 @@
+1. admin login
+2. add writer to list of things
+3. fix mobile navbar
+4. add second URL to add form
+6. add global mobile vs desktop variable? 
+7. link at top of filter results (if previous link has filter.... -> maybe issue with if switch)
+8. cut off legnth if too long

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}{{ type }}{% endblock %}
+{% block content %}
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #siteNav {
+    width: 100%;
+    z-index: 1000;
+  }
+
+  main {
+    margin-top: 70px;
+  }
+
+  .text-container {
+    max-height: auto;
+    overflow-y: auto;
+    text-align: center;
+    width: 1250px;
+    word-wrap: break-word;
+  }
+  .table-container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .list-items {
+    color: black;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .list_items {
+    list-style-type: none;
+    color: black;
+  }
+
+  .submit_button {
+    color: white;
+    background-color: #008080;
+    border-radius: 25px;
+    border: none;
+  }
+  textarea {
+    width: 70%;
+    height: 35em;
+  }
+  .textbox-format {
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+    width: 150%;
+  }
+  .multiselect_items {
+    list-style-type: none;
+  }
+</style>
+
+<main>
+  <div class="table-container">
+    {% block form %}
+    {% endblock %}
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Type</th>
+          <th scope="col">Topics</th>
+          <th scope="col">Hands</th>
+          <th scope="col">Pace</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lyric in lyrics %}
+        <tr>
+          <td>
+            <a href="/lyrics/{{ URLify(lyric.title) }}/desktop">{{ lyric.title }}</a>
+          </td>
+          <td>{% for type in lyric.type %} {{ type }}, {% endfor %}</td>
+          <td>{% for topic in lyric.topics %} {{ topic }}, {% endfor %}</td>
+          <td>{% for hand in lyric.hands %} {{ hand }}, {% endfor %}</td>
+          <td>{{ lyric.pace }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+<br />
+<br />
+<br />
+<br />
+<br />
+{% endblock %}

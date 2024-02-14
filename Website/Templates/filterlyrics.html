@@ -1,0 +1,23 @@
+{% extends 'home.html' %} 
+{% block title %}Filter Lyrics{% endblock %} 
+{% block form %}
+<form action="" method="POST" id="filterForm">
+  <div style="display: table">
+    <div style="display: table-cell; padding-right: 1em">
+      <p>{{ form.typeFilter }}</p>
+    </div>
+    <div style="display: table-cell; padding-right: 1em">
+      <p>{{ form.topicsFilter }}</p>
+    </div>
+    <div style="display: table-cell; padding-right: 1em">
+      <p>{{ form.handsFilter }}</p>
+    </div>
+    <div style="display: table-cell; padding-right: 1em">
+      <p>{{ form.paceFilter }}</p>
+    </div>
+    <div style="display: table-cell">
+      <p>{{ form.submit() }}</p>
+    </div>
+  </div>
+</form>
+{% endblock %}

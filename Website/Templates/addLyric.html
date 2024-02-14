@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Add Lyric{% endblock %} 
+{% block content %}
+<style>
+  main {
+    padding: 20px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .list_items {
+    list-style-type: none;
+  }
+
+  .submit_button {
+    color: white;
+    background-color: #008080;
+    border-radius: 25px;
+    border: none;
+  }
+  textarea {
+    width: 70%;
+    height: 35em;
+  }
+  .textbox-format {
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+  }
+  .stringfield-format {
+    width: 40%;
+  }
+  .multiselect_items {
+    list-style-type: none;
+  }
+</style>
+
+<div class="container">
+  <br />
+  <br />
+  <header2>
+    <h1>Input Info:</h1>
+  </header2>
+
+  <main>
+    <div>
+      <form id="inputLyricsForm" action="" method="POST">
+        <h3>{{ form.title.label }}</h3>
+        <p>{{ form.title(size=30) }}</p>
+        <h3>{{ form.type.label }}</h3>
+        <p>{{ form.type(size=30) }}</p>
+        <h3>{{ form.link.label }}</h3>
+        <h5>Please take the URL from the search bar</h5>
+        <p>{{ form.link(size=30) }}</p>
+        <h3>{{ form.linkTime.label }}</h3>
+        <p>{{ form.linkTime(size=30) }}</p>
+        <h3>{{ form.pace.label }}</h3>
+        <p>{{ form.pace(size=30) }}</p>
+        <h3>{{ form.hands.label }}</h3>
+        <p>{{ form.hands(size=30) }}</p>
+        <h3>{{ form.topics.label }}</h3>
+        <p>{{ form.topics(size=30) }}</p>
+        <h3>{{ form.words.label }}</h3>
+        <h5>
+          Please preface lines of translation with 'en-' and end them with ';',
+          as it will be formatted accordingly.
+        </h5>
+        <br />
+        <p>{{ form.words(size=30) }}</p>
+        <p class="submit_button btn btn-primary" style="align-content: center">
+          {{ form.submit() }}
+        </p>
+      </form>
+    </div>
+  </main>
+</div>
+{% endblock %}

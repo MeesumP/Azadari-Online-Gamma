@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block title %}Admin Page{% endblock %}
+{% block content %}
+<style>
+  main {
+    padding: 20px;
+  }
+
+  .search-section {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .search-options h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .search-options h3 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .search-options input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .list_items {
+    list-style-type: none;
+  }
+
+  .submit_button {
+    color: white;
+    background-color: #008080;
+    border-radius: 25px;
+    border: none;
+  }
+  textarea {
+    width: 70%;
+    height: 35em;
+  }
+  .textbox-format {
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+  }
+  .stringfield-format {
+    width: 40%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #siteNav {
+    width: 100%;
+    z-index: 1000;
+  }
+
+  main {
+    margin-top: 70px;
+  }
+
+  .text-container {
+    max-height: auto;
+    overflow-y: auto;
+    text-align: center;
+    width: 1250px;
+    word-wrap: break-word;
+  }
+
+  .table-container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+</style>
+{% if passwordVerified == False %}
+<div class="container">
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <form action="" method="POST" id="adminPasswordForm">
+    <h3>{{ form.password.label }}</h3>
+    <p>{{ form.password(size=30) }}</p>
+    <br />
+    <p class="submit_button btn btn-primary" style="align-content: center">
+      {{ form.submit() }}
+    </p>
+  </form>
+</div>
+{% endif %} {% if passwordVerified == True %}
+
+<main>
+  <div class="table-container">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Type</th>
+          <th scope="col">Topics</th>
+          <th scope="col">Hands</th>
+          <th scope="col">Pace</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lyric in lyrics %}
+        <tr>
+          <td>
+            <a href="/lyrics/{{ URLify(lyric.title) }}/desktop">{{ lyric.title }}</a>
+          </td>
+          <td>{% for type in lyric.type %} {{ type }}, {% endfor %}</td>
+          <td>{% for topic in lyric.topics %} {{ topic }}, {% endfor %}</td>
+          <td>{% for hand in lyric.hands %} {{ hand }}, {% endfor %}</td>
+          <td>{{ lyric.pace }}</td>
+          <td>
+            <a href="/lyrics/delete/{{ URLify(lyric.title) }}">Delete</a>
+          </td>
+          <td>
+            <a href="/lyrics/edit/{{ URLify(lyric.title) }}">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endif %} {% endblock %}

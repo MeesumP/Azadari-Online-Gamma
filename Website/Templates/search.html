@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+{% block title %}Search Lyrics{% endblock %}
+{% block form %}
+<form action="" method="POST" id="filterForm">
+  <div style="display: table">
+    <div style="display: table-cell; padding-right: 8em">
+      <p>{{ form.searchTerm }}</p>
+    </div>
+    <div style="display: table-cell">
+      <p>{{ form.submit() }}</p>
+    </div>
+  </div>
+</form>
+{% endblock %}
